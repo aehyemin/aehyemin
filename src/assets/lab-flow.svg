@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 680 460" width="680" height="460"
+     role="img"
+     aria-label="Korean Legal Agent Benchmark 구조도 — 왼쪽 원(QUESTION)에서 위아래 두 갈래로 갈라져 NO-TOOL 조건과 TOOL 조건이 되고, 다시 하나의 JUDGE 로 모여 오른쪽 RUBRIC 브래킷의 항목을 0 또는 1로 매긴다. 하단에는 항목 유형 티크와 심판 수, 점수 표시. 편집자적 미니멀 톤.">
+<title>Korean Legal Agent Benchmark — 구조도</title>
+<desc>같은 질문을 도구 있는 조건과 없는 조건에 각각 주고, 같은 쟁점별 채점표로 견준다. 두 조건이 위아래로 갈라졌다가 하나의 심판으로 모이는 대칭이 이 벤치마크의 구조다.</desc>
+
+<defs>
+  <style>
+    :root {
+      --ink:#141414;
+      --sec:#5a5a58;
+      --faint:#8b8b86;
+      --hair:#c2c1ba;
+      --accent:#3057a6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink:#f2f0e9;
+        --sec:#b6b6b0;
+        --faint:#7a7a75;
+        --hair:#3a3a36;
+        --accent:#8fb0e6;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+                        system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+           letter-spacing: -0.006em; fill: var(--ink); }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; }
+
+    /* 라벨 : mono 소형 · 편집자적 */
+    .lbl       { font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+                 font-size: 10.5px; letter-spacing: 0.14em;
+                 text-transform: uppercase; fill: var(--ink); }
+    .lbl-node  { font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+                 font-size: 11px; letter-spacing: 0.06em; fill: var(--ink); }
+    .lbl-sub   { font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+                 font-size: 9.5px; letter-spacing: 0.12em;
+                 text-transform: uppercase; fill: var(--faint); }
+    .lbl-agent { font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+                 font-size: 11px; letter-spacing: 0.14em;
+                 text-transform: uppercase; fill: var(--sec); }
+    .flow-lbl  { font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+                 font-size: 12px; letter-spacing: 0.05em; fill: var(--ink); }
+    .caption   { font-size: 13px; fill: var(--sec); letter-spacing: -0.002em; }
+
+    /* 노드 */
+    .circ-lg   { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+    .circ-sm   { fill: none; stroke: var(--ink); stroke-width: 1.3; }
+    .link      { stroke: var(--ink); stroke-width: 0.9; fill: none; }
+    .doc-line  { stroke: var(--faint); stroke-width: 1.5; stroke-linecap: round; }
+
+    /* 액센트 */
+    .acc-brk   { fill: none; stroke: var(--accent); stroke-width: 1.6;
+                 stroke-linecap: round; stroke-linejoin: miter; }
+    .acc-tick  { stroke: var(--accent); stroke-width: 1.9; stroke-linecap: round; }
+    .acc-type  { font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+                 font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
+                 fill: var(--accent); }
+
+    /* 하단 구분선 */
+    .rule      { stroke: var(--ink); stroke-width: 0.7; }
+    .rule-mini { stroke: var(--ink); stroke-width: 1; stroke-linecap: round; }
+  </style>
+</defs>
+
+<!-- ═══════════════════════════════════════════════════════
+     상단 코너 라벨
+   ═══════════════════════════════════════════════════════ -->
+
+<text class="lbl" x="42"  y="46">QUESTION</text>
+<text class="lbl" x="638" y="46" text-anchor="end">§ RUBRIC</text>
+
+<!-- ═══════════════════════════════════════════════════════
+     좌측 : QUESTION 노드 (큰 원)
+     질문만 준다 — 모범답변도, 인용 목록도 주지 않는다
+   ═══════════════════════════════════════════════════════ -->
+
+<circle class="circ-lg" cx="88" cy="170" r="26"/>
+<text class="lbl-agent" x="88" y="226" text-anchor="middle">QUESTION</text>
+
+<!-- ═══════════════════════════════════════════════════════
+     중앙 : 두 조건이 위아래로 갈라진다 (y=170 대칭축)
+     같은 질문 · 같은 하네스 · 도구만 다르다
+   ═══════════════════════════════════════════════════════ -->
+
+<!-- 갈라짐 -->
+<line class="link" x1="112.6" y1="161.5" x2="265.8" y2="108.6"/>
+<line class="link" x1="112.6" y1="178.5" x2="265.8" y2="231.4"/>
+
+<circle class="circ-sm" cx="279" cy="104" r="14"/>
+<text class="lbl-node" x="303" y="108">NO-TOOL</text>
+<text class="lbl-sub"  x="303" y="87">Parametric only</text>
+
+<circle class="circ-sm" cx="279" cy="236" r="14"/>
+<text class="lbl-node" x="303" y="240">TOOL</text>
+<text class="lbl-sub"  x="303" y="261">4 tools · max 30 turns</text>
+
+<!-- 모임 -->
+<line class="link" x1="292.2" y1="108.6" x2="456.8" y2="165.4"/>
+<line class="link" x1="292.2" y1="231.4" x2="456.8" y2="174.6"/>
+
+<circle class="circ-sm" cx="470" cy="170" r="14"/>
+<text class="lbl-agent" x="470" y="206" text-anchor="middle">Judge ×3</text>
+
+<!-- 심판 → 채점표 -->
+<line class="link" x1="484" y1="170" x2="514" y2="170"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     우측 : RUBRIC 브래킷 (accent) — 쟁점별 IRAC 항목
+     항목마다 0 또는 1. 유형은 I · R · R′ · A · C
+   ═══════════════════════════════════════════════════════ -->
+
+<path class="acc-brk" d="M522 116 L514 116 L514 224 L522 224"/>
+
+<text class="acc-type" x="532" y="130">I</text>
+<line class="doc-line" x1="552" y1="126" x2="640" y2="126"/>
+<text class="acc-type" x="532" y="154">R</text>
+<line class="doc-line" x1="552" y1="150" x2="632" y2="150"/>
+<text class="acc-type" x="532" y="178">R′</text>
+<line class="doc-line" x1="552" y1="174" x2="614" y2="174"/>
+<text class="acc-type" x="532" y="202">A</text>
+<line class="doc-line" x1="552" y1="198" x2="636" y2="198"/>
+<text class="acc-type" x="532" y="226">C</text>
+<line class="doc-line" x1="552" y1="222" x2="622" y2="222"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     하단 채점 스트립 : 항목 유형 티크 + 심판 수 + 점수
+   ═══════════════════════════════════════════════════════ -->
+
+<g transform="translate(0, 340)">
+  <text class="lbl" x="42" y="4">IRAC ITEMS</text>
+
+  <!-- 5 유형 티크 (I R R′ A C) -->
+  <line class="acc-tick" x1="146" y1="-6" x2="146" y2="12"/>
+  <line class="acc-tick" x1="156" y1="-6" x2="156" y2="12"/>
+  <line class="acc-tick" x1="166" y1="-6" x2="166" y2="12"/>
+  <line class="acc-tick" x1="176" y1="-6" x2="176" y2="12"/>
+  <line class="acc-tick" x1="186" y1="-6" x2="186" y2="12"/>
+
+  <text class="lbl" x="240" y="4">Judge ×3</text>
+
+  <!-- score marker -->
+  <line class="rule-mini" x1="360" y1="4" x2="500" y2="4"/>
+
+  <text class="lbl" x="514" y="4">0 / 1</text>
+</g>
+
+<!-- ═══════════════════════════════════════════════════════
+     하단 rule + 흐름 라벨 + 한글 캡션
+   ═══════════════════════════════════════════════════════ -->
+
+<line class="rule" x1="42" y1="384" x2="638" y2="384"/>
+
+<text class="flow-lbl" x="42" y="416">QUESTION → NO-TOOL ∥ TOOL → JUDGE ×3 → RUBRIC → 0 / 1</text>
+
+<text class="caption" x="42" y="440">도구를 쓴 조건과 쓰지 않은 조건을 같은 채점표로 견준다</text>
+
+</svg>

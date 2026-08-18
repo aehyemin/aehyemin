@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 420 132" width="420" height="132"
+     role="img"
+     aria-label="Data Tool Harness 엠블럼 — 왼쪽 사람이 말풍선으로 요구사항을 말하고(SPEAK), 가운데 명세 문서로 정리되며(SPEC), 오른쪽 구조를 갖춘 검수 도구 창으로 완성되는(TOOL) 3단계 개괄.">
+<title>Data Tool Harness</title>
+<desc>사람이 말로 설명한 요구사항(왼쪽 SPEAK) 이 명세 문서로 정리되고(가운데 SPEC), 구조를 갖춘 검수 도구(오른쪽 TOOL) 로 완성되는 3단계 개괄. Patent VQA·Legal Agent Benchmark 와 통일된 Apple 톤 팔레트를 따랐다.</desc>
+
+<defs>
+  <style>
+    /* 라이트 · 다크 자동 대응 (SF Pro system font, Apple palette) */
+    :root {
+      --surface:#ffffff;
+      --ink:#1d1d1f;
+      --sec:#6e6e73;
+      --faint:#a1a1a6;
+      --line:#d8d8dd;
+      --accent:#0f7a6b;
+      --accent-ink:#0c5f53;
+      --accent-soft:#e6f2ef;
+      --accent-line:#a9d4cb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface:#1c1c1e;
+        --ink:#f5f5f7;
+        --sec:#98989d;
+        --faint:#6b6b70;
+        --line:#33333a;
+        --accent:#41c9ad;
+        --accent-ink:#7ce4d1;
+        --accent-soft:#0f2f2a;
+        --accent-line:#2f5c53;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+                        system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+           letter-spacing: -0.006em; }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; }
+
+    .card    { fill: var(--surface); stroke: var(--line); stroke-width: 1.4; }
+    .hairline{ stroke: var(--line); stroke-width: 1.1; fill: none; }
+    .part    { stroke: var(--ink);  stroke-width: 1.6; fill: none;
+               stroke-linecap: round; stroke-linejoin: round; }
+    .dot     { fill: var(--faint); }
+    .doc     { fill: none; stroke: var(--line); stroke-width: 1.5;
+               stroke-linejoin: round; }
+    .fill-line-strong { fill: var(--faint); opacity: 0.85; }
+    .fill-line-weak   { fill: var(--faint); opacity: 0.5; }
+    .blk-accent { fill: var(--accent-soft); stroke: var(--accent-line); stroke-width: 1; }
+    .arrow   { stroke: var(--faint);  stroke-width: 1.7; fill: none; stroke-linecap: round; }
+    .arrow-a { stroke: var(--accent); stroke-width: 1.8; fill: none; stroke-linecap: round; }
+    .tag-mono { font-size: 9px; font-weight: 500; letter-spacing: 0.14em;
+                text-transform: uppercase; fill: var(--faint); }
+  </style>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="180%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0b0f18" flood-opacity="0.10"/>
+  </filter>
+</defs>
+
+<!-- ═══════════════════════════════════════════════
+     3박자 : SPEAK (말함) → SPEC (정리) → TOOL (완성)
+     · 카드 y=16 h=92 (16–108), 라벨 tag-mono y=124
+     · 카드1 14–132 · 화살표 · 카드2 162–258 · 화살표(accent) · 카드3 288–406
+   ═══════════════════════════════════════════════ -->
+
+<!-- ① SPEAK — 사람이 말풍선으로 요구사항을 말한다 -->
+<g filter="url(#soft)">
+  <rect class="card" x="14" y="16" width="118" height="92" rx="13"/>
+</g>
+<path class="part" d="M36 30 H96 a10 10 0 0 1 10 10 V54 a10 10 0 0 1 -10 10 H58 L46 76 L50 64 H36 a10 10 0 0 1 -10 -10 V40 a10 10 0 0 1 10 -10 Z"/>
+<rect class="fill-line-strong" x="40" y="41" width="52" height="4.5" rx="2.25"/>
+<rect class="fill-line-weak"   x="40" y="51" width="38" height="4.5" rx="2.25"/>
+<circle class="part" cx="58" cy="88" r="8.5"/>
+<path class="part" d="M44 103 Q58 90 72 103"/>
+
+<!-- ①→② 화살표 -->
+<path class="arrow" d="M138 62 h18 M151 57 l6 5 l-6 5" stroke-linejoin="round"/>
+
+<!-- ② SPEC — 명세 문서로 정리 -->
+<g filter="url(#soft)">
+  <rect class="card" x="162" y="16" width="96" height="92" rx="13"/>
+</g>
+<path class="doc" d="M188 34 a6 6 0 0 1 6 -6 H220 L232 40 V90 a6 6 0 0 1 -6 6 H194 a6 6 0 0 1 -6 -6 Z"/>
+<path class="doc" d="M220 28 V40 H232"/>
+<rect class="blk-accent"       x="196" y="44" width="30" height="6" rx="3"/>
+<rect class="fill-line-strong" x="196" y="57" width="30" height="4.5" rx="2.25"/>
+<rect class="fill-line-weak"   x="196" y="67" width="30" height="4.5" rx="2.25"/>
+<rect class="fill-line-weak"   x="196" y="77" width="20" height="4.5" rx="2.25"/>
+
+<!-- ②→③ 화살표 (accent) -->
+<path class="arrow-a" d="M264 62 h18 M277 57 l6 5 l-6 5" stroke-linejoin="round"/>
+
+<!-- ③ TOOL — 구조를 갖춘 검수 도구 창 -->
+<g filter="url(#soft)">
+  <rect class="card" x="288" y="16" width="118" height="92" rx="13"/>
+</g>
+<line class="hairline" x1="288" y1="42" x2="406" y2="42"/>
+<circle class="dot" cx="302" cy="31" r="2.2"/>
+<circle class="dot" cx="311" cy="31" r="2.2"/>
+<line class="hairline" x1="320" y1="42" x2="320" y2="100"/>
+<rect class="fill-line-weak" x="298" y="52" width="14" height="5" rx="2.5"/>
+<rect class="fill-line-weak" x="298" y="64" width="14" height="5" rx="2.5"/>
+<rect class="fill-line-weak" x="298" y="76" width="14" height="5" rx="2.5"/>
+<rect class="blk-accent"       x="328" y="50" width="64" height="18" rx="4"/>
+<rect class="fill-line-strong" x="328" y="74" width="64" height="8"  rx="3"/>
+<rect class="fill-line-weak"   x="328" y="88" width="42" height="8"  rx="3"/>
+
+<!-- 단계 라벨 -->
+<text class="tag-mono" x="73"  y="124" text-anchor="middle">Speak</text>
+<text class="tag-mono" x="210" y="124" text-anchor="middle">Spec</text>
+<text class="tag-mono" x="347" y="124" text-anchor="middle" fill="var(--accent-ink)">Tool</text>
+</svg>

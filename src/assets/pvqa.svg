@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 420 132" width="420" height="132"
+     role="img"
+     aria-label="Patent VQA 엠블럼 — 왼쪽 특허 도면 카드, 가운데 파이프라인 스텝, 오른쪽 생성된 QA 카드로 이어지는 3단계 개괄">
+<title>Patent VQA</title>
+<desc>특허 도면(왼쪽) 이 하네스 파이프라인(가운데 스텝) 을 거쳐 QA 카드(오른쪽) 로 완성되는 3단계 개괄. 사내 도구 하네스와 통일된 Apple 톤 팔레트를 따랐다.</desc>
+
+<defs>
+  <style>
+    /* 라이트 · 다크 자동 대응 (SF Pro system font, Apple palette) */
+    :root {
+      --surface:#ffffff;
+      --ink:#1d1d1f;
+      --sec:#6e6e73;
+      --faint:#a1a1a6;
+      --line:#d8d8dd;
+      --accent:#0f7a6b;
+      --accent-ink:#0c5f53;
+      --accent-soft:#e6f2ef;
+      --accent-line:#a9d4cb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface:#1c1c1e;
+        --ink:#f5f5f7;
+        --sec:#98989d;
+        --faint:#6b6b70;
+        --line:#33333a;
+        --accent:#41c9ad;
+        --accent-ink:#7ce4d1;
+        --accent-soft:#0f2f2a;
+        --accent-line:#2f5c53;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+                        system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+           letter-spacing: -0.006em; }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; }
+
+    .card    { fill: var(--surface); stroke: var(--line); stroke-width: 1.4; }
+    .card-a  { fill: var(--accent-soft); stroke: var(--accent-line); stroke-width: 1.5; }
+    .hairline{ stroke: var(--line); stroke-width: 1.1; fill: none; }
+    .part    { stroke: var(--ink);  stroke-width: 1.5; fill: none; }
+    .dot     { fill: var(--ink); }
+    .fill-line-strong { fill: var(--faint); opacity: 0.85; }
+    .fill-line-weak   { fill: var(--faint); opacity: 0.55; }
+    .fill-accent-strong { fill: var(--accent); opacity: 0.75; }
+    .fill-accent-weak   { fill: var(--accent); opacity: 0.4; }
+    .arrow   { stroke: var(--faint); stroke-width: 1.7; fill: none; stroke-linecap: round; }
+    .arrow-a { stroke: var(--accent); stroke-width: 1.8; fill: none; stroke-linecap: round; }
+    .tag-mono { font-size: 9px; font-weight: 500; letter-spacing: 0.14em;
+                text-transform: uppercase; fill: var(--faint); }
+  </style>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="180%">
+    <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0b0f18" flood-opacity="0.10"/>
+  </filter>
+</defs>
+
+<!-- ① Patent Drawing -->
+<g filter="url(#soft)">
+  <rect class="card" x="14" y="18" width="112" height="96" rx="13"/>
+</g>
+<!-- 도면 프레임 -->
+<rect class="hairline" x="30" y="40" width="80" height="60" rx="6"/>
+<!-- 부품 : 두 원 + 커넥터 (조립도) -->
+<circle class="part" cx="52" cy="72" r="12"/>
+<circle class="part" cx="82" cy="60" r="6"/>
+<line   class="part" x1="63" y1="66" x2="76" y2="61"/>
+<circle class="dot"  cx="52" cy="72" r="2"/>
+<text class="tag-mono" x="70" y="30" text-anchor="middle">Drawing</text>
+
+<!-- Arrow 1 -->
+<path class="arrow" d="M133 66 h20 M148 61 l6 5 l-6 5"
+      stroke-linejoin="round"/>
+
+<!-- ② Pipeline dots (mini step indicator) -->
+<g filter="url(#soft)">
+  <rect class="card" x="161" y="42" width="98" height="48" rx="12"/>
+</g>
+<line class="hairline" x1="175" y1="66" x2="245" y2="66"/>
+<g>
+  <circle cx="175" cy="66" r="3.6" class="fill-line-strong"/>
+  <circle cx="198" cy="66" r="3.6" class="fill-line-strong"/>
+  <circle cx="222" cy="66" r="3.6" class="fill-line-strong"/>
+  <circle cx="245" cy="66" r="3.6" class="fill-accent-strong"/>
+</g>
+<text class="tag-mono" x="210" y="30" text-anchor="middle">Pipeline</text>
+
+<!-- Arrow 2 (accent) -->
+<path class="arrow-a" d="M266 66 h20 M281 61 l6 5 l-6 5"
+      stroke-linejoin="round"/>
+
+<!-- ③ Generated QA -->
+<g filter="url(#soft)">
+  <rect class="card-a" x="294" y="18" width="112" height="96" rx="13"/>
+</g>
+<!-- Q label + lines -->
+<rect x="306" y="32" width="14" height="12" rx="3" fill="var(--accent)"/>
+<text x="313" y="41" text-anchor="middle" font-size="9" font-weight="700" fill="var(--surface)">Q</text>
+<rect class="fill-accent-strong" x="326" y="35" width="70" height="4" rx="2"/>
+<rect class="fill-accent-weak"   x="326" y="45" width="52" height="4" rx="2"/>
+
+<!-- divider -->
+<line x1="306" y1="66" x2="394" y2="66" stroke="var(--accent-line)" stroke-width="1" opacity="0.55"/>
+
+<!-- A label + lines -->
+<rect x="306" y="76" width="14" height="12" rx="3" fill="var(--accent)"/>
+<text x="313" y="85" text-anchor="middle" font-size="9" font-weight="700" fill="var(--surface)">A</text>
+<rect class="fill-accent-strong" x="326" y="79" width="70" height="4" rx="2"/>
+<rect class="fill-accent-strong" x="326" y="89" width="62" height="4" rx="2"/>
+<rect class="fill-accent-weak"   x="326" y="99" width="44" height="4" rx="2"/>
+
+<text class="tag-mono" x="350" y="30" text-anchor="middle" fill="var(--accent-ink)">QA</text>
+
+</svg>
