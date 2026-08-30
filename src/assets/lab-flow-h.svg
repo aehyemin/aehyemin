@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 680 400" width="680" height="400"
+     role="img"
+     aria-label="Korean Legal Agent Benchmark 구조도 — 왼쪽 원(질문)에서 위아래 두 갈래로 갈라져 무도구 조건과 도구 조건이 되고, 다시 하나의 심판으로 모여 오른쪽 채점표의 IRAC 항목(I·R·R′·A·C)을 0 또는 1로 매긴다.">
+<title>Korean Legal Agent Benchmark — 구조도</title>
+<desc>같은 질문을 도구 있는 조건과 없는 조건에 각각 주고 같은 채점표로 견준다. 두 조건이 갈라졌다가 하나의 심판으로 모이는 대칭이 이 벤치마크의 구조다.</desc>
+
+<defs>
+  <style>
+    :root {
+      --ink:#141414;
+      --sec:#5a5a58;
+      --faint:#8b8b86;
+      --hair:#d5d3cb;
+      --accent:#3057a6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink:#f2f0e9;
+        --sec:#b6b6b0;
+        --faint:#7a7a75;
+        --hair:#33332f;
+        --accent:#8fb0e6;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+                        system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+           fill: var(--ink); }
+
+    /* 라벨 — 한글은 대문자가 없으므로 자간과 굵기로 위계를 만든다 */
+    .eyebrow  { font-size: 10.5px; font-weight: 700; letter-spacing: 0.22em;
+                fill: var(--ink); }
+    .node     { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em;
+                fill: var(--ink); }
+    .node-sub { font-size: 10px; font-weight: 500; letter-spacing: 0.02em;
+                fill: var(--faint); }
+    .flow     { font-size: 12.5px; font-weight: 600; letter-spacing: 0.03em;
+                fill: var(--ink); }
+    .caption  { font-size: 13px; font-weight: 400; fill: var(--sec);
+                letter-spacing: -0.002em; }
+
+    /* 노드 · 연결 */
+    .circ-lg  { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+    .circ-sm  { fill: none; stroke: var(--ink); stroke-width: 1.3; }
+    .link     { stroke: var(--ink); stroke-width: 0.9; fill: none; }
+    .doc-line { stroke: var(--faint); stroke-width: 1.5; stroke-linecap: round; }
+
+    /* 액센트 */
+    .acc-brk  { fill: none; stroke: var(--accent); stroke-width: 1.6;
+                stroke-linejoin: miter; }
+    .acc-type { font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+                font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em;
+                fill: var(--accent); }
+    .mark-on  { fill: var(--accent); }
+    .mark-off { fill: none; stroke: var(--faint); stroke-width: 1.2; }
+
+
+    /* 구분선 */
+    .rule     { stroke: var(--ink);  stroke-width: 0.7; }
+  </style>
+</defs>
+
+<!-- ═══════════════════════════════════════════════════════
+     상단 코너 라벨
+   ═══════════════════════════════════════════════════════ -->
+
+<text class="eyebrow"   x="42"  y="46">질문</text>
+<text class="eyebrow"   x="638" y="46" text-anchor="end">채점표</text>
+
+<!-- ═══════════════════════════════════════════════════════
+     대칭축 y=160 · 마름모 네 변의 중심간 거리 192.27 로 동일
+     분기점 x=270 은 질문(88)과 심판(452)의 정중앙
+   ═══════════════════════════════════════════════════════ -->
+
+<!-- 질문 : 주어지는 것은 질문뿐이다 -->
+<circle class="circ-lg" cx="88" cy="160" r="26"/>
+<text class="node"     x="88" y="214" text-anchor="middle">질문</text>
+<text class="node-sub" x="88" y="230" text-anchor="middle">gold set의 Q만 제공</text>
+
+<!-- 갈라짐 : 같은 질문 · 같은 하네스 · 도구만 다르다 -->
+<line class="link" x1="112.6" y1="151.6" x2="256.7" y2="102.5"/>
+<line class="link" x1="112.6" y1="168.4" x2="256.7" y2="217.5"/>
+
+<circle class="circ-sm" cx="270" cy="98" r="14"/>
+<text class="node"     x="294" y="102">무도구</text>
+<text class="node-sub" x="294" y="82">검색, 열람 없이 답함</text>
+
+<circle class="circ-sm" cx="270" cy="222" r="14"/>
+<text class="node"     x="294" y="226">도구</text>
+<text class="node-sub" x="294" y="246">도구 5종, 최대 30턴</text>
+
+<!-- 모임 : 두 조건을 같은 심판이 본다 -->
+<line class="link" x1="283.3" y1="102.5" x2="438.7" y2="155.5"/>
+<line class="link" x1="283.3" y1="217.5" x2="438.7" y2="164.5"/>
+
+<circle class="circ-sm" cx="452" cy="160" r="14"/>
+<text class="node"     x="434" y="200" text-anchor="middle">LLM Judge</text>
+<text class="node-sub" x="430" y="216" text-anchor="middle">Opus-5 단일 모델</text>
+
+<line class="link" x1="466" y1="160" x2="496" y2="160"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     우측 : 채점표 — 유형 I·R·R′·A·C · 항목마다 충족(채운 사각)/미충족(빈 사각)
+   ═══════════════════════════════════════════════════════ -->
+
+<path class="acc-brk" d="M504 106 L496 106 L496 210 L504 210"/>
+
+<text class="acc-type" x="512" y="119.5">I</text>
+<rect class="mark-on" x="534" y="112" width="8" height="8" rx="2"/>
+<line class="doc-line" x1="550" y1="116" x2="636" y2="116"/>
+
+<text class="acc-type" x="512" y="141.5">R</text>
+<rect class="mark-on" x="534" y="134" width="8" height="8" rx="2"/>
+<line class="doc-line" x1="550" y1="138" x2="626" y2="138"/>
+
+<text class="acc-type" x="512" y="163.5">R′</text>
+<rect class="mark-off" x="534.6" y="156.6" width="6.8" height="6.8" rx="1.7"/>
+<line class="doc-line" x1="550" y1="160" x2="612" y2="160"/>
+
+<text class="acc-type" x="512" y="185.5">A</text>
+<rect class="mark-on" x="534" y="178" width="8" height="8" rx="2"/>
+<line class="doc-line" x1="550" y1="182" x2="630" y2="182"/>
+
+<text class="acc-type" x="512" y="207.5">C</text>
+<rect class="mark-on" x="534" y="200" width="8" height="8" rx="2"/>
+<line class="doc-line" x1="550" y1="204" x2="620" y2="204"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     하단 rule + 흐름 라벨 + 한글 캡션
+   ═══════════════════════════════════════════════════════ -->
+
+<line class="rule" x1="42" y1="306" x2="638" y2="306"/>
+
+<text class="flow"    x="42" y="338">질문 → 무도구 ∥ 도구 → LLM Judge → 채점표 → 0 / 1</text>
+<text class="caption" x="42" y="362">도구를 쓴 조건과 쓰지 않은 조건을 같은 채점표로 채점</text>
+
+</svg>
