@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 680 400" width="680" height="400"
      role="img"
-     aria-label="Korean Legal Agent Benchmark 구조도 — 왼쪽 원(질문)에서 위아래 두 갈래로 갈라져 무도구 조건과 도구 조건이 되고, 다시 하나의 심판으로 모여 오른쪽 채점표의 IRAC 항목(쟁점 I · 법리 R · 적용 A · 결론 C)을 0 또는 1로 매긴다.">
+     aria-label="Korean Legal Agent Benchmark 구조도 — 왼쪽 원(질문)에서 위아래 두 갈래로 갈라져 무도구 조건과 도구 조건이 되고, 다시 하나의 심판으로 모여 오른쪽 채점표의 IRAC 항목(I·R·R′·A·C)을 0 또는 1로 매긴다.">
 <title>Korean Legal Agent Benchmark — 구조도</title>
 <desc>같은 질문을 도구 있는 조건과 없는 조건에 각각 주고 같은 채점표로 견준다. 두 조건이 갈라졌다가 하나의 심판으로 모이는 대칭이 이 벤치마크의 구조다.</desc>
 
@@ -100,7 +100,7 @@
 <line class="link" x1="466" y1="160" x2="496" y2="160"/>
 
 <!-- ═══════════════════════════════════════════════════════
-     우측 : 채점표 — 유형 I·R·A·C(법리 R 은 쟁점마다 여러 개) · 항목마다 충족(채운 사각)/미충족(빈 사각)
+     우측 : 채점표 — 유형 I·R·R′·A·C · 항목마다 충족(채운 사각)/미충족(빈 사각)
    ═══════════════════════════════════════════════════════ -->
 
 <path class="acc-brk" d="M504 106 L496 106 L496 210 L504 210"/>
@@ -113,7 +113,7 @@
 <rect class="mark-on" x="534" y="134" width="8" height="8" rx="2"/>
 <line class="doc-line" x1="550" y1="138" x2="626" y2="138"/>
 
-<text class="acc-type" x="512" y="163.5">R</text>
+<text class="acc-type" x="512" y="163.5">R′</text>
 <rect class="mark-off" x="534.6" y="156.6" width="6.8" height="6.8" rx="1.7"/>
 <line class="doc-line" x1="550" y1="160" x2="612" y2="160"/>
 
