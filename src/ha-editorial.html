@@ -202,6 +202,8 @@ p{text-wrap:pretty}
 #stNo{color:#fff;font-weight:600}
 
 #stmt .scrBody{justify-content:stretch}
+/* 문장 네 줄은 화면 아래쪽에 붙인다 — 빈 아래 여백을 없앤다 */
+#stmt .stick{grid-template-rows:minmax(0,1fr)}
 /* 문장 화면은 화면 높이보다 길다 — 붙잡아 둔 채로 스크롤을 받아
    글자가 다 무너진 뒤에야 다음(흰) 화면이 올라온다 */
 .scr.tall{display:block;min-height:190vh;padding:0}
@@ -210,7 +212,7 @@ p{text-wrap:pretty}
   gap:clamp(18px,3vh,40px);
   padding:calc(var(--vpad) + clamp(52px,5.4vw,74px)) var(--pad) var(--vpad)}
 #stStage{position:relative;width:100%;flex:1;min-height:0;
-  display:flex;flex-direction:column;justify-content:center;
+  display:flex;flex-direction:column;justify-content:flex-end;
   padding-left:clamp(0px,11vw,200px)}
 .sl{font-family:var(--disp);font-weight:800;letter-spacing:-.045em;line-height:.94;
   text-transform:uppercase;margin:0;
