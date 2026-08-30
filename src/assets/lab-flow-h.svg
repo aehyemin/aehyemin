@@ -95,7 +95,7 @@
 
 <circle class="circ-sm" cx="452" cy="160" r="14"/>
 <text class="node"     x="434" y="200" text-anchor="middle">LLM Judge</text>
-<text class="node-sub" x="430" y="216" text-anchor="middle">Opus-5 단일 모델</text>
+<text class="node-sub" x="430" y="216" text-anchor="middle">Opus-5</text>
 
 <line class="link" x1="466" y1="160" x2="496" y2="160"/>
 
@@ -125,7 +125,8 @@
 <rect class="mark-on" x="534" y="200" width="8" height="8" rx="2"/>
 <line class="doc-line" x1="550" y1="204" x2="620" y2="204"/>
 
-<text class="node-sub" x="636" y="232" text-anchor="end">I 쟁점 · R 법리 · A 적용 · C 결론</text>
+<text class="node-sub" x="636" y="230" text-anchor="end">I 쟁점 · R 법리 · R′ 근거 조문</text>
+<text class="node-sub" x="636" y="244" text-anchor="end">A 적용 · C 결론</text>
 
 <!-- ═══════════════════════════════════════════════════════
      하단 rule + 흐름 라벨 + 한글 캡션
