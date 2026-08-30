@@ -152,9 +152,10 @@ PROJECTS = [
         "lead": "내부 배포 플랫폼을 몰라도, 자연어만으로 검수 도구를 만들고 "
                 "배포와 권한 설정까지 할 수 있는 하네스입니다.",
         "background": [
-            "외주 작업자 20명이 사용한 검수 도구를 개발하며, 도구 기능보다 "
-            "배포와 인증, 권한, 외부 시스템 연동 규칙이 반복되는 병목이었습니다.",
-            "도구를 만들 때마다 이 규칙들을 처음부터 다시 적용해야 했습니다.",
+            "데이터 검수 도구를 개발하면서 기능 구현보다 배포, 인증, 권한, "
+            "외부 연동에 더 많은 시간이 들었습니다.",
+            "도구마다 같은 병목이 반복됐고, 그 과정을 규칙으로 고정해 "
+            "자동화하는 하네스를 개발했습니다.",
         ],
         "vis_svg": "dth-arch.svg", "arch": True,
         "pipe": [
@@ -202,13 +203,13 @@ PROJECTS = [
                    ("2~3명 → 1명", "비개발자+개발자 협업 → 혼자 완결", True)],
     },
     {
-        "id": "p2", "vis_svg": "lab-flow.svg", "wide_vis": True, "vis": "p2", "no": "02", "pc": "#FF5C9D", "pct": "#D6316F",
+        "id": "p2", "vis_svg": "lab-flow-h.svg", "wide_vis": True, "vis": "p2", "no": "02", "pc": "#FF5C9D", "pct": "#D6316F",
         "kick": "02 / PROJECT",
         "name": ["Legal", "Agent", "Benchmark"],
         "lead": "에이전트가 법령·판례를 직접 검색하고 근거 기반 답변을 생성하는지 "
                 "평가하는 벤치마크입니다.",
         "background": "객관식 정답 여부만으로는 에이전트가 적절한 법적 근거를 찾고 "
-                      "이를 바탕으로 추론하는 능력을 평가하기 어렵다.",
+                      "이를 바탕으로 추론하는 능력을 평가하기 어렵습니다.",
         "pipe": [
             ("01", "질의 선별", "GOLD SET"),
             ("02", "에이전트 실행", "TOOL-USE"),
@@ -221,10 +222,10 @@ PROJECTS = [
                   "Rubric Design", "Model Evaluation"],
         "tech": ["Python", "LLM API", "Retrieval API", "LLM-as-Judge", "pytest"],
 
-        "note_title": ["질문만 주고", "찾는 과정까지 채점"],
+        "note_title": ["결론뿐 아니라", "근거와 과정까지 채점"],
         "labels": {"chal": "01 DATASET - 쟁점 기준 채점표",
                    "cause": "02 AGENTS - 질문만 주고 스스로 탐색",
-                   "fix": "03 EVALUATION - 세 심판이 따로 채점"},
+                   "fix": "03 EVALUATION - LLM Judge 3종이 독립 채점"},
         "challenge": [
             "국내 법률상담 서비스의 AI 상담 QA 를 원본으로 사용",
             "변호사가 모범답변과 쟁점을 지정해 검수",
@@ -237,14 +238,16 @@ PROJECTS = [
             "도구 조건과 무도구 조건을 같은 하네스에서 7모델로 실행",
         ],
         "fix": [
-            "심판 3종이 서로 못 본 채 항목마다 <b>0 / 1 로 판정</b>"
-            "(문항별 통과율의 평균으로 계산)",
-            "인용 검사는 추출 → 조회 → 판정으로 따로 실행, 점수에는 미반영",
+            "LLM Judge 3종이 독립 채점, 항목마다 <b>0 / 1</b> "
+            "(문항별 통과율의 평균이 점수)",
+            "답변이 인용한 조문, 판례는 따로 조회해 실재 여부 검증",
         ],
-        "res_lead": "최신 모델 5종은 도구 조건에서 문항 점수 "
-                    "<b>평균 2.1~2.3pt 상승</b>, "
-                    "구형 2종(gpt-4o·gpt-4o-mini)은 반대로 "
-                    "<u>3.3~4.5pt 하락</u>",
+        "res_lead": [
+            "최신 모델 5종은 도구 조건에서 문항 점수 <b>평균 2.1~2.3pt 상승</b>, "
+            "구형 2종(gpt-4o·gpt-4o-mini)은 반대로 <u>3.3~4.5pt 하락</u>",
+            "도구 종류와 하네스 구성에 따라 성능이 갈리므로, 최신 모델 기준으로 "
+            "더 높은 점수를 내는 하네스를 개발 중",
+        ],
 
         "decision": [
             ("out", "예외만 던지게 수정 — 실패는 잡히지만 이유가 남지 않음"),
@@ -262,12 +265,13 @@ PROJECTS = [
         "result": [],
     },
     {
-        "id": "p3", "vis": "p1", "vis_svg": "pvqa-flow.svg", "wide_vis": True, "no": "03", "pc": "#315CFF", "pct": "#315CFF",
+        "id": "p3", "vis": "p1", "vis_svg": "pvqa-flow.svg",
+        "arch": True, "no": "03", "pc": "#315CFF", "pct": "#315CFF",
         "kick": "03 / PROJECT",
         "name": ["Patent", "VQA", "Dataset"],
-        "lead": "특허 문서의 텍스트와 도면을 연결해 학습 가능한 VQA 데이터로 구축했습니다.",
-        "background": "모델의 도면 데이터 이해를 위한 Vision Understanding "
-                      "데이터가 필요했습니다.",
+        "lead": "특허 도면과 본문을 연결해, 도면을 봐야 답할 수 있는 VQA 데이터를 구축했습니다.",
+        "background": "모델의 도면 이해를 위한 Vision Understanding QA 데이터를 "
+                      "특허 문서에서 합성했습니다.",
         "pipe": [
             ("01", "설명문 + QA 생성", "GEN"),
             ("02", "설명문 검증", "CTX JUDGE"),
@@ -276,13 +280,28 @@ PROJECTS = [
         ],
         # 02 에서 떨어지면 01 로 되돌아간다 — 스트립 아래 되돌림 화살표로 표시
         "retry": (2, "검증 실패 시 다시 생성"),
-        "reasons_hd": "이미지 → QA 를 바로 생성하지 않는 이유",
-        "reasons": [
-            "텍스트 설명문을 한 번 거쳐 두면 검증할 근거가 생긴다.",
-            "같은 도면에서 나온 QA 들이 서로 일관된다.",
-            "문제가 생기면 QA 하나하나가 아니라 설명문 단위로 재생성해 "
-            "효율적으로 복구할 수 있다.",
-        ],
+        "cmp": {
+            "hd": "이미지 → QA 를 바로 생성하지 않은 이유",
+            "a": "이미지 → QA 직접 생성",
+            "b": "설명문을 중간 표현으로",
+            "rows": [
+                ("검증 근거",
+                 "판정할 때마다 이미지를 다시 봐야 함 - <u>Vision 호출 비용, 판정자도 오독</u>",
+                 "\u201c부품 A 는 은색?\u201d → 매번 이미지에서 확인",
+                 "설명문이 근거 문서 - <b>텍스트끼리 대조해 자동 검증</b>",
+                 "설명문에 \u201c부품 A 는 은색\u201d → 답이 설명문에 있나 자동 판정"),
+                ("QA 일관성",
+                 "호출마다 이미지 해석이 흔들려 <u>같은 도면 QA 끼리 모순</u>",
+                 "QA1 \u201c부품 A 는 좌측\u201d · QA2 \u201c부품 A 는 하단\u201d",
+                 "모든 QA 가 <b>같은 설명문에서 파생</b>돼 표현이 통일됨",
+                 "설명문 \u201c부품 A 는 좌측 하단\u201d → 모든 QA 가 이 표현을 따름"),
+                ("복구 방식",
+                 "QA 를 하나씩 재생성 - <u>같은 원인을 여러 번 만남</u>",
+                 "20개 QA 실패 → vision 재호출 20회",
+                 "설명문 하나를 고치면 <b>파생 QA 세트가 함께 갱신</b>",
+                 "설명문 1회 재작성 → 파생 QA 전체 자동 갱신"),
+            ],
+        },
         "focus": "03",
         "_role": ["Data Pipeline", "Synthetic Data Generation",
                   "Evaluation Design", "Quality Validation"],
@@ -315,14 +334,15 @@ PROJECTS = [
                 ],
             },
             "cap": "재필터링 필요 논의 후, 루브릭의 grounding 축을 강화해 QA Judge "
-                   "프롬프트를 개선하고, 전체 데이터셋을 재필터링해 학습 데이터의 "
-                   "근거 신뢰성 확보",
+                   "프롬프트를 개선하고 전체 데이터셋을 다시 판정",
             "metrics": [
                 ("근거 부재 검출량", "×10", "기존 대비 약 10배 증가", True),
-                ("전체 데이터 재필터링", "−20%", "기존 통과 QA 중 약 20% 재제외", False),
                 ("놓쳤던 오류 검출률", "100%",
                  "기존 기준이 통과시켰지만 사람이 오류로 판정한 QA를 "
                  "10라운드 반복 실험에서 모두 검출", False),
+                ("최종 학습 데이터", "40.3만 QA",
+                 "원본 도면 587만 장 중 1.6%를 선별해 "
+                 "특허 3.2만 건 · 도면 9.5만 장에서 합성", False),
             ],
         },
         "challenge": [
@@ -479,9 +499,10 @@ SYNC_DEMO = """<div id="syncDemo">
             </form>
           </div>
         </div>
-        <p class="m" id="syCap">실제 서비스 화면이 아니라 당시 구현한
-          드래그·동기화 기능을 재현한 것입니다 · 예시 데이터</p>
       </div>"""
+
+SYNC_CAP = """<p class="m" id="syCap">실제 서비스 화면이 아니라 당시 구현한
+        드래그·동기화 기능을 재현한 것입니다 · 예시 데이터</p>"""
 
 # ── 소켓 구조 BEFORE / AFTER — 해결 과정 · 구현 위에 놓인다 ───────────────
 SOCKET_DIAGRAM = """<div class="sockd rv">
@@ -559,6 +580,26 @@ def project_html(p: dict) -> str:
                + "".join(f"<li>{rich(t)}</li>" for t in bg) + "</ul>"
                if isinstance(bg, list)
                else f'<p class="txt kr">{esc(bg).replace(chr(10), "<br>")}</p>')
+    cmp_html = ""
+    if p.get("cmp"):
+        C = p["cmp"]
+        def cell(cls, txt, ex):
+            return (f'<td class="{cls}">{rich(txt)}'
+                    f'<span class="ex"><i>예</i>{rich(ex)}</span></td>')
+        rows = "".join(
+            f'<tr><th scope="row">{esc(k)}</th>'
+            + cell("a", a, ax) + cell("b", b, bx) + '</tr>'
+            for k, a, ax, b, bx in C["rows"])
+        cmp_html = (f'<details class="cmpBlk rv"><summary>'
+                    f'<span class="m k">{esc(C["hd"])}</span>'
+                    f'<span class="more m">비교 보기</span></summary>'
+                    f'<table class="cmp"><thead><tr>'
+                    f'<td class="hd"></td>'
+                    f'<th scope="col"><b>METHOD A</b><i>{esc(C["a"])}</i></th>'
+                    f'<th scope="col" class="pick"><b>METHOD B · 적용</b>'
+                    f'<i>{esc(C["b"])}</i></th></tr></thead>'
+                    f'<tbody>{rows}</tbody></table></details>')
+
     rs = "".join(f'<li class="kr">{rich(t)}</li>' for t in p.get("reasons", []))
     reasons_html = (f'<div class="whyBlk rv"><p class="m k lbl">'
                     f'{esc(p["reasons_hd"])}</p><ul class="why">{rs}</ul></div>'
@@ -571,7 +612,9 @@ def project_html(p: dict) -> str:
     arch = p.get("arch") is True        # 구조도를 가로 전체로 펼치는 프로젝트
     noflow = p.get("noflow") is True    # 세로로 긴 구조도 — 단계 스트립 없이 크게
     wide_vis = p.get("wide_vis") is True  # 도면 칸을 넓게 쓰는 프로젝트
-    hero_cls = " solo" if wide or arch else " tv" if noflow or wide_vis else ""
+    portrait = p.get("vis_portrait") is True  # 세로로 긴 도면
+    hero_cls = (" solo" if wide or arch else
+                (" tv pv" if portrait else " tv") if noflow or wide_vis else "")
     intro_cls = " two" if arch else ""
     vis_ratio = ""
     if p.get("vis_svg"):
@@ -586,7 +629,11 @@ def project_html(p: dict) -> str:
         else VISUALS[p.get("vis", p["id"])])
     vis_html = "" if wide or arch else (
         f'<figure class="pjVis rv"{vis_ratio}><div class="fr">{vis_inner}</div></figure>')
-    arch_html = f"""<div class="archBlk rv">
+    arch_html = f"""<div class="archBlk bare rv">
+        <div class="archFig">{vis_inner}</div>
+      </div>
+
+      {cmp_html}""" if arch and p.get("cmp") else f"""<div class="archBlk rv">
         <div class="flowHd">
           <span class="m k">PROJECT STRUCTURE</span>
           <span class="m">{esc(full)}</span>
@@ -605,14 +652,19 @@ def project_html(p: dict) -> str:
 
       {reasons_html}"""
     fig_html = (f'<div class="ntFig rv">{SOCKET_DIAGRAM}</div>'
-                f'<div class="pjWide rv">{SYNC_DEMO}</div>') if p.get("sock") else ""
+                f'<div class="pjWide rv">{SYNC_DEMO}</div>'
+                f'{SYNC_CAP}') if p.get("sock") else ""
     res = "".join(
         f'<div class="rc{" hot" if hot else ""}"><div class="v">{esc(v)}</div>'
         f'<div class="lb">{esc(l)}</div></div>'
         for v, l, hot in p["result"])
     # 데모가 들어간 화면은 그 자체가 근거라 수치 줄을 따로 두지 않는다
-    res_lead = (f'<p class="resLead kr">{rich(p["res_lead"])}</p>'
-                if p.get("res_lead") else "")
+    rl = p.get("res_lead")
+    if isinstance(rl, list):
+        res_lead = ('<ul class="bl rl kr">'
+                    + "".join(f"<li>{rich(t)}</li>" for t in rl) + "</ul>")
+    else:
+        res_lead = f'<p class="resLead kr">{rich(rl)}</p>' if rl else ""
     # 루브릭을 고쳐 쓴 프로젝트 — 노트 본문을 BEFORE/AFTER 판정 기준 비교로 짠다
     rb_html = ""
     if p.get("rubric"):
@@ -656,7 +708,22 @@ def project_html(p: dict) -> str:
         f'<div class="ntRes rv"><p class="m lbl">{esc(L["res"])}</p>'
         f'{res_lead}' + (f'<div class="rw">{res}</div>' if res else "") + '</div>')
 
-    grid_html = rb_html if p.get("rubric") else f"""<div class="ntGrid">
+    if p.get("note_svg"):
+        # 핵심 기여를 글 나열이 아니라 띠 도해로 — 층마다 카드가 이어진다
+        grid_html = f'<div class="noteFig rv">{import_svg(p["note_svg"])}</div>'
+    elif p.get("bands"):
+        # 세 층이 위에서 아래로 흐르는 배치 — 파이프라인 띠처럼 읽힌다
+        def band(cls, label, items):
+            li = "".join(f'<li class="kr">{rich(t)}</li>' for t in items)
+            return (f'<div class="band {cls} rv"><div class="bhd">{lbl_html(label)}</div>'
+                    f'<ul class="bl bnd">{li}</ul></div>')
+        grid_html = ('<div class="bands">'
+                     + band("chal", L["chal"], p["challenge"])
+                     + band("cs", L["cause"], p["cause"])
+                     + band("fx", L["fix"], p["fix"])
+                     + '</div>')
+    else:
+        grid_html = rb_html if p.get("rubric") else f"""<div class="ntGrid">
         <div class="blk chal rv">
           <p class="m lbl{' two' if ' - ' in L['chal'] else ''}">{lbl_html(L['chal'])}</p>
           {chal_html}
@@ -731,9 +798,7 @@ FAMILIES = [
     ("Sofia Sans Extra Condensed", "wght@800", True),
     ("Archivo", "wght@400;500;600;700;800", True),
     ("IBM Plex Mono", "wght@400;500;600", True),
-    ("Noto Sans KR", "wght@400;500;700;900", False),
-    # 캡션 제목 전용 — 한글 800 이 없으면 900 으로 반올림돼 너무 굵어진다
-    ("Noto Sans KR", "wght@800", False, "Noto KR 800"),
+    ("Noto Sans KR", "wght@400;500;700;800;900", False),
 ]
 
 ASCII = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -791,12 +856,18 @@ def fonts_css(doc: str) -> str:
             weight = wm.group(1) if wm else "400"
             raw = get(m.group(1))
             total += len(raw)
+            b64 = base64.b64encode(raw).decode("ascii")
             out.append(
                 f"@font-face{{font-family:'{name}';font-style:normal;"
                 f"font-weight:{weight};font-display:swap;"
-                f"src:url(data:font/woff2;base64,"
-                f"{base64.b64encode(raw).decode('ascii')}) format('woff2')}}")
+                f"src:url(data:font/woff2;base64,{b64}) format('woff2')}}")
             n += 1
+            # 캡션 제목 전용 별칭 — 한글 800 이 없으면 900 으로 반올림돼 너무 굵어진다
+            if fam == "Noto Sans KR" and weight == "800":
+                out.append(
+                    f"@font-face{{font-family:'Noto KR 800';font-style:normal;"
+                    f"font-weight:800;font-display:swap;"
+                    f"src:url(data:font/woff2;base64,{b64}) format('woff2')}}")
         print(f"  {name:30} {n} face(s)  {total/1024:6.1f} KB  ({len(text)} glyphs)")
     return "\n".join(out)
 
