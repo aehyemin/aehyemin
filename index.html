@@ -595,6 +595,7 @@ table.cmp td b{font-weight:600;
   /* 두 줄 길이를 고르게 — 끝줄에 한 마디만 남는 것을 막는다 */
   text-wrap:balance}
 .bl.bg li::before{background:var(--sub);top:.72em}
+.nb{white-space:nowrap}
 .bl.is li{color:var(--org)}
 .bl li u,.resLead u{text-decoration:none;color:var(--org);font-weight:600}
 .bl li b{font-weight:500;
@@ -1013,7 +1014,7 @@ table.cmp td b{font-weight:600;
           <p class="lead kr rv">내부 배포 플랫폼을 몰라도, 자연어만으로 검수 도구를 만들고 배포와 권한 설정까지 할 수 있는 하네스입니다.</p>
           <div class="rv">
             <p class="m lbl">BACKGROUND</p>
-            <ul class="bl bg kr"><li>데이터 검수 도구를 개발하면서 기능 구현보다 배포, 인증, 권한, 외부 연동에 더 많은 시간이 들었습니다.</li><li>도구마다 같은 병목이 반복됐고, 그 과정을 규칙으로 고정해 자동화하는 하네스를 개발했습니다.</li></ul>
+            <ul class="bl bg kr"><li>데이터 검수 도구를 개발하면서 기능 구현보다 <span class="nb">배포, 인증, 권한, 외부 연동</span>에 더 많은 시간이 들었습니다.</li><li>도구마다 같은 병목이 반복됐고, 그 과정을 규칙으로 고정해 자동화하는 하네스를 개발했습니다.</li></ul>
           </div>
         </div>
         
@@ -1310,6 +1311,8 @@ table.cmp td b{font-weight:600;
 <rect class="mark-on" x="534" y="200" width="8" height="8" rx="2"/>
 <line class="doc-line" x1="550" y1="204" x2="620" y2="204"/>
 
+<text class="node-sub" x="636" y="232" text-anchor="end">I 쟁점 · R 법리 · R′ 근거조문 · A 적용 · C 결론</text>
+
 <!-- ═══════════════════════════════════════════════════════
      하단 rule + 흐름 라벨 + 한글 캡션
    ═══════════════════════════════════════════════════════ -->
@@ -1318,7 +1321,6 @@ table.cmp td b{font-weight:600;
 
 <text class="flow"    x="42" y="338">질문 → 무도구 ∥ 도구 → LLM Judge → 채점표 → 0 / 1</text>
 <text class="caption" x="42" y="362">도구를 쓴 조건과 쓰지 않은 조건을 같은 채점표로 채점</text>
-<text class="node-sub" x="42" y="384">채점 유형 — I 쟁점 · R 법리 · R′ 근거 조문 · A 적용 · C 결론</text>
 
 </svg>
 </div></figure>

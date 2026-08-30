@@ -152,8 +152,8 @@ PROJECTS = [
         "lead": "내부 배포 플랫폼을 몰라도, 자연어만으로 검수 도구를 만들고 "
                 "배포와 권한 설정까지 할 수 있는 하네스입니다.",
         "background": [
-            "데이터 검수 도구를 개발하면서 기능 구현보다 배포, 인증, 권한, "
-            "외부 연동에 더 많은 시간이 들었습니다.",
+            "데이터 검수 도구를 개발하면서 기능 구현보다 "
+            "<n>배포, 인증, 권한, 외부 연동</n>에 더 많은 시간이 들었습니다.",
             "도구마다 같은 병목이 반복됐고, 그 과정을 규칙으로 고정해 "
             "자동화하는 하네스를 개발했습니다.",
         ],
@@ -543,7 +543,9 @@ def rich(t: str) -> str:
     t = html.escape(t, quote=False)
     for tag in ("b", "u"):
         t = t.replace(f"&lt;{tag}&gt;", f"<{tag}>").replace(f"&lt;/{tag}&gt;", f"</{tag}>")
-    return t.replace("&lt;br&gt;", "<br>")
+    t = t.replace("&lt;br&gt;", "<br>")
+    # <n>…</n> 안은 줄을 넘기지 않는다 — 나열이 중간에서 갈리는 것을 막는다
+    return t.replace("&lt;n&gt;", '<span class="nb">').replace("&lt;/n&gt;", "</span>")
 
 
 def project_html(p: dict) -> str:
