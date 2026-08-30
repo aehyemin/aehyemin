@@ -636,6 +636,15 @@ table.cmp td b{font-weight:600;
 @media(max-width:759px){.rbc{grid-template-columns:1fr}.rbA{transform:rotate(90deg)}}
 
 .ntRes .lbl{margin:0 0 clamp(10px,1.5vh,17px)}
+/* 성과 옆에 한계 — 수치는 조건과 함께 읽어야 한다 */
+.ntRes.two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+  gap:clamp(20px,3.4vw,64px);align-items:start}
+.ntRes.two>.col{min-width:0}
+.ntRes.two .bl.rl li{font-size:clamp(13px,1.12vw,17px);font-weight:500;line-height:1.52}
+.ntLim .lbl{color:var(--dim)}
+.bl.lm li{font-size:clamp(12px,1vw,15px);line-height:1.55;color:var(--sub)}
+.bl.lm li::before{color:var(--dim)}
+@media(max-width:899px){.ntRes.two{grid-template-columns:1fr;gap:clamp(16px,2.4vh,26px)}}
 .rw{display:flex;flex-wrap:wrap;gap:clamp(16px,2.6vh,26px) 20px}
 .rc{flex:1 1 210px;min-width:0;max-width:clamp(260px,27vw,380px)}
 @media(min-width:900px){.rw{gap:clamp(20px,2.6vw,44px)}}
