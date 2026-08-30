@@ -125,9 +125,6 @@
 <rect class="mark-on" x="534" y="200" width="8" height="8" rx="2"/>
 <line class="doc-line" x1="550" y1="204" x2="620" y2="204"/>
 
-<text class="node-sub" x="636" y="230" text-anchor="end">I 쟁점 · R 법리 · R′ 근거 조문</text>
-<text class="node-sub" x="636" y="244" text-anchor="end">A 적용 · C 결론</text>
-
 <!-- ═══════════════════════════════════════════════════════
      하단 rule + 흐름 라벨 + 한글 캡션
    ═══════════════════════════════════════════════════════ -->
@@ -136,5 +133,6 @@
 
 <text class="flow"    x="42" y="338">질문 → 무도구 ∥ 도구 → LLM Judge → 채점표 → 0 / 1</text>
 <text class="caption" x="42" y="362">도구를 쓴 조건과 쓰지 않은 조건을 같은 채점표로 채점</text>
+<text class="node-sub" x="42" y="384">채점 유형 — I 쟁점 · R 법리 · R′ 근거 조문 · A 적용 · C 결론</text>
 
 </svg>
